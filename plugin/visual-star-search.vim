@@ -9,6 +9,7 @@ function! s:VSetSearch(cmdtype)
 endfunction
 
 xnoremap * :<C-u>call <SID>VSetSearch('/')<CR>/<C-R>=@/<CR><CR>
+xnoremap <kMultiply> :<C-u>call <SID>VSetSearch('/')<CR>/<C-R>=@/<CR><CR>
 xnoremap # :<C-u>call <SID>VSetSearch('?')<CR>?<C-R>=@/<CR><CR>
 
 " recursively vimgrep for word under cursor or selection if you hit leader-star
