@@ -8,8 +8,11 @@ function! s:VSetSearch(cmdtype)
   let @s = temp
 endfunction
 
-xnoremap * :<C-u>call <SID>VSetSearch('/')<CR>/<C-R>=@/<CR><CR>
-xnoremap # :<C-u>call <SID>VSetSearch('?')<CR>?<C-R>=@/<CR><CR>
+command! VStarSearch  call <SID>VSetSearch('/') | norm \/<C-R>=@/<CR><CR>
+command! VPoundSearch call <SID>VSetSearch('?') | norm ?<C-R>=@/<CR><CR>
+
+xnoremap * :<C-u>VStarSearch<CR>
+xnoremap # :<C-u>VPoundSearch<CR>
 
 " recursively vimgrep for word under cursor or selection if you hit leader-star
 nmap <leader>* :execute 'noautocmd vimgrep /\V' . substitute(escape(expand("<cword>"), '\'), '\n', '\\n', 'g') . '/ **'<CR>
